@@ -49,6 +49,13 @@ define(
 	Problem.prototype.addVariable = function(name, domain) {
 		this.variables[name] = new Variable(name,domain);
 	}
+	Problem.prototype.changeVariable = function(name, newdomain) {
+	  if (this.variables[name]) {
+	    this.variables[name].domain = newdomain;	    
+	  } else {
+	    throw new Error("Attempted to change a nonexistant variable.");
+	  }
+	}
 
 	Problem.prototype.addConstraint = function(variables, fn) {
 		this.constraints.push(new Constraint(variables, fn));
