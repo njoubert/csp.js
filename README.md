@@ -1,15 +1,8 @@
 # CPS.JS
 
 Constraint Satisfaction Problem Solver
-Niels Joubert
 
-## What is this?
-
-This is a library for expressing and solving constraint satisfaction problems, in pure JavaScript.
-
-Currently it only solves discrete finite-domain problems, and provides a couple of solvers.
-
-In the future I hope to support infinite-domain problems and continuous problems as well.
+This is a library for expressing and solving constraint satisfaction problems, in pure JavaScript. Currently it only solves discrete finite-domain problems, and provides a couple of solvers. In the future I hope to support infinite-domain problems and continuous problems as well.
 
 ## Example
 
