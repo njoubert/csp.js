@@ -11,6 +11,25 @@ Currently it only solves discrete finite-domain problems, and provides a couple 
 
 In the future I hope to support infinite-domain problems and continuous problems as well.
 
+## Example
+
+	p.addVariable("a", [1,2,3]);
+	p.addVariable("b", [4,5,6]);
+	p.addVariable("c", [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
+	
+	p.addConstraint(
+		["a", "b"],
+		function(a, b) { return a*2 === b; }
+	);
+
+	p.addConstraint(
+		["b", "c"],
+		function(b, c) { return b*2 === c; }
+	);
+	
+	var one_solution = p.getSolution();
+	var all_solutions = p.getSolutions();
+	
 ## What is a CSP?
 
 A Constraint Satisfaction Problem is formally defined as:
