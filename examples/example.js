@@ -25,6 +25,8 @@ require(
 			function(b, c) { return b*2 === c; }
 		);
 
+
+
 		document.getElementById("version").innerHTML = csp.version;
 		
 		vhtml = document.getElementById("variables");

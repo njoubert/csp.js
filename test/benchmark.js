@@ -1,0 +1,6 @@
+/* 
+
+Benchmarks for the different solvers... 
+
+Look at jQuery to see how they benchmark without function call overhead.
+*/

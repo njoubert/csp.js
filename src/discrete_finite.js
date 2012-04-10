@@ -100,6 +100,14 @@ define(
 	}
 	
 	RecursiveBacktrackingSolver.prototype.solve = function(assignments, variables, constraints, single) {
+		
+		
+		
+		function recursiveSolve(assignments, variables, constraints, single) {
+			//Move stuff in here to not re-evaluate the checkAssignment function...
+			
+		}
+		
 		if (Object.keys(assignments).length === Object.keys(variables).length) {
 			if (!single) {
 				this.allAssignments.push(util.hashcopy(assignments));
