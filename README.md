@@ -30,7 +30,17 @@ In the future I hope to support infinite-domain problems and continuous problems
 	var one_solution = p.getSolution();
 	var all_solutions = p.getSolutions();
 	
-## What is a CSP?
+## Solvers and Problems we support
+
+Currently we support finite-domain problems, with the following solvers:
+
+- Recursive Backtracking
+- Forward-Checking (in progress)
+- AC3 Arc Consistency (in progress)	
+
+## Intro to CSPs
+	
+### What is a CSP?
 
 A Constraint Satisfaction Problem is formally defined as:
 
@@ -50,10 +60,18 @@ There are multiple classes of CSPs:
 Then there are subclasses of these:
 
 - *Integer problems*, discrete infinite problems on the integers
+- *Binary constraint problems*, where all the constraints are between two variables
 - *Linear problems*, where all the constraints are linear
 - *Integer Linear problems*, where all the constraints are linear and the values integers. This is the hardest kind of constraint problem.
+- And many more...
 
+### Examples of real-world CSPs
 
+There are tons and tons of problems that can reduce to constraint satisfaction problems, and it is a rich field of study. But, here's some that everyone knows about:
+
+- Sudoku
+- Coloring maps
+- Scheduling blocks of time
 
 ## Credits
 
