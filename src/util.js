@@ -6,6 +6,17 @@ define({
           target[name] = src[name];
         }
       }
-    }
-    
+    },
+   
+		hashcopy: function(obj) {
+			var ret = obj.constructor();
+			for (var p in obj) {
+				if (obj.hasOwnProperty(p)) {
+					ret[p] = obj[p];
+				}
+			}
+			return ret;
+		}
+
+ 
 });

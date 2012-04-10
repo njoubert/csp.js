@@ -6,7 +6,11 @@
  *
  */
  
-define(function () {
+define(
+	
+	['util'],
+	
+	function (util) {
 	
 	/* 
 	 * Variable
@@ -33,25 +37,17 @@ define(function () {
 		return "(" + this.variables.toString() + ") => " + this.fn.toString();
 	}
 	
-	Constraint.prototype.forwardCheck = function(vars, doms, assigns) {
-		
-	}
-
 	/* 
 	 * Problem 
 	 */	
 	var Problem = function() {
 		this.solver = new RecursiveBacktrackingSolver();
-		this.variables = [];
+		this.variables = {};
 		this.constraints = [];
 	};
 	
 	Problem.prototype.addVariable = function(name, domain) {
-		if (!this.variables.some(function(el) {el.name === name})) {
-			this.variables.push(new Variable(name,domain));			
-		} else {
-			throw new Error("Cannot insert duplicate variables into CSP");
-		}
+		this.variables[name] = new Variable(name,domain);
 	}
 
 	Problem.prototype.addConstraint = function(variables, fn) {
@@ -63,15 +59,15 @@ define(function () {
 	}
 	
 	Problem.prototype.getSolution = function() {
-		
+		return this.solver.getSolution(this);
 	}
 
 	Problem.prototype.getSolutions = function() {
-		
+		return this.solver.getSolutions(this);
 	}
 	
 	Problem.prototype.getSolutionIter = function() {
-		
+		return this.solver.getSolutions(this);
 	}
 	
 	/* 
@@ -79,9 +75,99 @@ define(function () {
 	 */
 	var RecursiveBacktrackingSolver = function() {
 		
-		assignments = {}; //For a variable, what value has been assigned?
-		
 	};
+	
+	RecursiveBacktrackingSolver.prototype.getSolution = function(csp) {
+		var assignment = {}
+		if (this.solve(assignment, csp.variables, csp.constraints, true)) {
+			return assignment;
+		} else {
+			return {};
+		}
+	}
+
+	RecursiveBacktrackingSolver.prototype.getSolutions = function(csp) {
+		this.allAssignments = [];
+		this.solve({}, csp.variables, csp.constraints, false);
+		return this.allAssignments;
+	}
+
+	RecursiveBacktrackingSolver.prototype.getSolutionIter = function(csp) {
+		throw {
+			error: "Unsupported",
+			message: "RecursiveBacktrackingSolver does not support a solution iterator"
+		}
+	}
+	
+	RecursiveBacktrackingSolver.prototype.solve = function(assignments, variables, constraints, single) {
+		if (Object.keys(assignments).length === Object.keys(variables).length) {
+			if (!single) {
+				this.allAssignments.push(util.hashcopy(assignments));
+			}
+			return true;
+		}
+		//find the next variable
+		var nextVar = null;
+		for (v in variables) {
+			var found = false;
+			for (a in assignments) {
+				if (v === a) {
+					found = true;
+				}
+			}
+			if (!found) {
+				nextVar = variables[v];
+				break;
+			}
+		}
+		
+		function checkAssignment(nextVar, val) {
+			assignments[nextVar.name] = val;
+			for (var c in constraints) {
+				args = []
+				var valid = true;
+				
+				//try to build the argument list for this constraint...
+				for (var k in constraints[c].variables) {
+					var fp = constraints[c].variables[k]
+					if (assignments[fp]) {
+						args.push(assignments[fp]);
+					} else {
+						valid = false;
+						break;
+					}
+				}
+				
+				if (valid) {
+					//we can check it, so check it.
+					if (!constraints[c].fn.apply(null,args)) {
+						delete assignments[nextVar.name];
+						return false;
+					}
+				}
+
+			}
+			delete assignments[nextVar.name];
+			return true;
+		}
+		
+		//now try the values in its domain
+		for (var j in nextVar.domain) {
+			var val = nextVar.domain[j];
+			var valid = true;
+			if (checkAssignment(nextVar, val)) {
+				assignments[nextVar.name] = val;
+				if (this.solve(assignments, variables, constraints, single)) {
+					if (single) {
+						return true
+					}
+				}
+				delete assignments[nextVar.name];
+			}
+		}
+		return false;
+		
+	}
 	
 	
 	/*
