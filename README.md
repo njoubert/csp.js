@@ -6,6 +6,8 @@ This is a library for expressing and solving constraint satisfaction problems, i
 
 ## Example
 
+	var p = csp.DiscreteProblem();
+	
 	p.addVariable("a", [1,2,3]);
 	p.addVariable("b", [4,5,6]);
 	p.addVariable("c", [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
@@ -22,7 +24,7 @@ This is a library for expressing and solving constraint satisfaction problems, i
 	
 	var one_solution = p.getSolution();
 	var all_solutions = p.getSolutions();
-	
+
 ## Solvers and Problems we support
 
 Currently we support finite-domain problems, with the following solvers:
