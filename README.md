@@ -1,4 +1,4 @@
-# CPS.JS
+# CSP.JS
 
 Constraint Satisfaction Problem Solver
 
