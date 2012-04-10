@@ -39,9 +39,9 @@ Currently we support finite-domain problems, with the following solvers:
 
 A Constraint Satisfaction Problem is formally defined as:
 
-- A set of variables, Xi ... Xn
-- Each variable has a domain of values it can take, Di ... Dn
-- A set of constraints Ci ... Cn that specifies allowable combinations of values for a subset of the variables.
+- A set of variables, `Xi ... Xn`
+- Each variable has a domain of values it can take, `Di ... Dn`
+- A set of constraints `Ci ... Cn` that specifies allowable combinations of values for a subset of the variables.
 
 That is, a set of variables, with relations between the valid values of these variables.
 
