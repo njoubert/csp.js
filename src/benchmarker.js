@@ -10,7 +10,6 @@ define( function() {
   var log = function(str) {
     if (div) {
       newstr = "<tr><td>" + str.replace(/\|/g, '</td><td>') + "</td></tr>";
-      console.log(newstr);
       div.innerHTML += newstr;
 
     } else {
