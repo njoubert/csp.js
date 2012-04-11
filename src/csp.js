@@ -7,17 +7,17 @@
  */
  
 define(
-	
-	["util", "discrete_finite"],
-	
-	function (util, discrete_finite) {
-	
-	var ret = {
-		version: "0.1",
-	}
+  
+  ["util", "discrete_finite"],
+  
+  function (util, discrete_finite) {
+  
+  var ret = {
+    version: "0.1",
+  }
 
-	util.mixin(ret, discrete_finite);
+  util.mixin(ret, discrete_finite);
 
-	return ret;
-	
+  return ret;
+  
 });

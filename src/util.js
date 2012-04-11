@@ -8,15 +8,15 @@ define({
       }
     },
    
-		hashcopy: function(obj) {
-			var ret = obj.constructor();
-			for (var p in obj) {
-				if (obj.hasOwnProperty(p)) {
-					ret[p] = obj[p];
-				}
-			}
-			return ret;
-		}
+    hashcopy: function(obj) {
+      var ret = obj.constructor();
+      for (var p in obj) {
+        if (obj.hasOwnProperty(p)) {
+          ret[p] = obj[p];
+        }
+      }
+      return ret;
+    }
 
  
 });
