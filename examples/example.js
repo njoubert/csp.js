@@ -26,7 +26,34 @@ require(
       ["b", "c"],
       function(b, c) { return b*2 === c; }
     );
+    
+    
+    
+    
+    
+    var p2 = csp.DiscreteProblem();
 
+    allVars = [];
+    for (var a = 65; a < 91; a++) {
+      allVars.push(String.fromCharCode(a));
+      p2.addVariable(String.fromCharCode(a), [0,1,2,3]);
+    }
+
+
+    p2.addConstraint(
+      ["A", "B"],
+      function(a, b) { return (a === 2); }
+    );
+    
+    var sol2 = p2.getSolution()
+    p2s = document.getElementById("p2_out");
+    for (var j in sol2) {
+      p2s.innerHTML += (j + "=" + sol2[j] + " ");
+    }
+    if (sol2["A"] != 2) {
+      document.getElementById("p2_bug").innerHTML = "A should be 2! Bug when using \"0\" as value!";
+      
+    }
 
 
     document.getElementById("version").innerHTML = csp.version;
