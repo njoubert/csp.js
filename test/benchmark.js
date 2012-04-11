@@ -5,13 +5,40 @@ Benchmarks for the different solvers...
 Look at jQuery to see how they benchmark without function call overhead.
 */
 
+require.config({
+  baseUrl: "../src/"
+});
+
 require(
   
   ['csp', 'benchmarker'],
   
   function(csp, benchmarker) {
+        
+    var currentdiv;
     
-    var setup = function() {
+    outerdiv = document.getElementById("output");
+    
+    
+    function pushChunkEl() {
+      currentdiv = document.createElement("table");
+      currentdiv.className = "output_table"
+      outerdiv.appendChild(currentdiv);
+    }
+    
+    function getOutputEl(par) {
+      var newdiv = document.createElement("tr");
+      newdiv.className = "output_row";
+      par.appendChild(newdiv);
+      return newdiv;      
+    }
+    
+    //-------------------------------------------
+    
+    pushChunkEl();
+    
+    
+    var Setup1 = function() {
       
       this.p = csp.DiscreteProblem();
       
@@ -31,26 +58,55 @@ require(
       
     }
     
-    benchmarker.measure_longrunning(
-      "DiscreteProblem.getSolution 3 vars 2 consts"
+    benchmarker.config(getOutputEl(currentdiv));
+    benchmarker.measure(
+      "DiscreteProblem.getSolution 3 vars 2 consts",
       100,
       {
-        setup: setup,
+        setup: Setup1,
         test: function() {
           var sol = this.p.getSolution();
-        
         }
-      })
+      });
 
-      benchmarker.measure_longrunning(
-        "DiscreteProblem.getSolutions 3 vars 2 consts"
-        100,
-        {
-          setup: setup,
-          test: function() {
-            var allSoln = this.p.getSolutions();
-          }
-        })
+    benchmarker.config(getOutputEl(currentdiv));
+    benchmarker.measure(
+      "DiscreteProblem.getSolutions 3 vars 2 consts",
+      100,
+      {
+        setup: Setup1,
+        test: function() {
+          var allSoln = this.p.getSolutions();
+        }
+      });
+      
+    //-------------------------------------------
+      
+    pushChunkEl();
+
+    benchmarker.config(getOutputEl(currentdiv));
+    benchmarker.measure(
+      "DiscreteProblem.getSolution 3 vars 2 consts",
+      100,
+      {
+        setup: Setup1,
+        test: function() {
+          var sol = this.p.getSolution();
+        }
+      });
+
+    benchmarker.config(getOutputEl(currentdiv));
+    benchmarker.measure(
+      "DiscreteProblem.getSolutions 3 vars 2 consts",
+      100,
+      {
+        setup: Setup1,
+        test: function() {
+          var allSoln = this.p.getSolutions();
+        }
+      });
+    
+      
       
       
     
