@@ -4,10 +4,12 @@ require.config({
 
 require(
 	
-	['csp'],
+	['csp', 'Hash', 'Set'],
 	
-	function(csp) {
+	function(csp, Hash, Set) {
 		
+		window.Hash = Hash;
+		window.Set = Set;
 		
 		var p = csp.DiscreteProblem();
 		

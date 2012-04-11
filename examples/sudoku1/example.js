@@ -157,9 +157,6 @@ require(
 		
 
 
-
-
-
 		document.getElementById("version").innerHTML = csp.version;
 		
 		vhtml = document.getElementById("variables");
