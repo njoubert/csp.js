@@ -58,6 +58,9 @@ define(
   }
 
   Problem.prototype.addConstraint = function(variables, fn) {
+      if (variables.length == 0) {
+          return;
+      }
     this.constraints.push(new Constraint(variables, fn));
   }
   
