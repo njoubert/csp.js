@@ -58,6 +58,9 @@ define(
   }
 
   Problem.prototype.addConstraint = function(variables, fn) {
+      if (variables.length == 0) {
+          return;
+      }
     this.constraints.push(new Constraint(variables, fn));
   }
   
@@ -144,8 +147,8 @@ define(
         
         //try to build the argument list for this constraint...
         for (var k in constraints[c].variables) {
-          var fp = constraints[c].variables[k]
-          if (assignments[fp]) {
+          var fp = constraints[c].variables[k];
+          if (typeof assignments[fp] != "undefined") {
             args.push(assignments[fp]);
           } else {
             valid = false;
