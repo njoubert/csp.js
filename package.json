@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "lint": "eslint src test"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "requirejs": "^2.1.15"
   },
   "devDependencies": {
+    "eslint": "^7.1.0",
     "husky": ">=4",
     "lint-staged": ">=10",
     "prettier": "^2.0.5"
@@ -36,6 +38,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,css,md}": "prettier --write",
+    "*.{js,ts}": "eslint"
   }
 }
