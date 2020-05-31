@@ -6,24 +6,24 @@ This is a library for expressing and solving constraint satisfaction problems, i
 
 ## Example
 
-    var p = csp.DiscreteProblem();
+```js
+var p = csp.DiscreteProblem();
 
-    p.addVariable("a", [1,2,3]);
-    p.addVariable("b", [4,5,6]);
-    p.addVariable("c", [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
+p.addVariable("a", [1, 2, 3]);
+p.addVariable("b", [4, 5, 6]);
+p.addVariable("c", [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
 
-    p.addConstraint(
-    	["a", "b"],
-    	function(a, b) { return a*2 === b; }
-    );
+p.addConstraint(["a", "b"], function (a, b) {
+  return a * 2 === b;
+});
 
-    p.addConstraint(
-    	["b", "c"],
-    	function(b, c) { return b*2 === c; }
-    );
+p.addConstraint(["b", "c"], function (b, c) {
+  return b * 2 === c;
+});
 
-    var one_solution = p.getSolution();
-    var all_solutions = p.getSolutions();
+var one_solution = p.getSolution();
+var all_solutions = p.getSolutions();
+```
 
 ## Solvers and Problems we support
 
