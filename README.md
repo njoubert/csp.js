@@ -6,24 +6,24 @@ This is a library for expressing and solving constraint satisfaction problems, i
 
 ## Example
 
-	var p = csp.DiscreteProblem();
-	
-	p.addVariable("a", [1,2,3]);
-	p.addVariable("b", [4,5,6]);
-	p.addVariable("c", [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
-	
-	p.addConstraint(
-		["a", "b"],
-		function(a, b) { return a*2 === b; }
-	);
+    var p = csp.DiscreteProblem();
 
-	p.addConstraint(
-		["b", "c"],
-		function(b, c) { return b*2 === c; }
-	);
-	
-	var one_solution = p.getSolution();
-	var all_solutions = p.getSolutions();
+    p.addVariable("a", [1,2,3]);
+    p.addVariable("b", [4,5,6]);
+    p.addVariable("c", [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
+
+    p.addConstraint(
+    	["a", "b"],
+    	function(a, b) { return a*2 === b; }
+    );
+
+    p.addConstraint(
+    	["b", "c"],
+    	function(b, c) { return b*2 === c; }
+    );
+
+    var one_solution = p.getSolution();
+    var all_solutions = p.getSolutions();
 
 ## Solvers and Problems we support
 
@@ -31,10 +31,10 @@ Currently we support finite-domain problems, with the following solvers:
 
 - Recursive Backtracking
 - Forward-Checking (in progress)
-- AC3 Arc Consistency (in progress)	
+- AC3 Arc Consistency (in progress)
 
 ## Intro to CSPs
-	
+
 ### What is a CSP?
 
 A Constraint Satisfaction Problem is formally defined as:
@@ -47,17 +47,17 @@ That is, a set of variables, with relations between the valid values of these va
 
 There are multiple classes of CSPs:
 
-- *Discrete problems*, where the values of each variable can be enumerated
-- *Finite problems*, where the size of domain is finite
-- *Continuous problems*, where the values of each variable is a range
-- *Infinite problems*, where the domain of a variable is of infinite extent
+- _Discrete problems_, where the values of each variable can be enumerated
+- _Finite problems_, where the size of domain is finite
+- _Continuous problems_, where the values of each variable is a range
+- _Infinite problems_, where the domain of a variable is of infinite extent
 
 Then there are subclasses of these:
 
-- *Integer problems*, discrete infinite problems on the integers
-- *Binary constraint problems*, where all the constraints are between two variables
-- *Linear problems*, where all the constraints are linear
-- *Integer Linear problems*, where all the constraints are linear and the values integers. This is the hardest kind of constraint problem.
+- _Integer problems_, discrete infinite problems on the integers
+- _Binary constraint problems_, where all the constraints are between two variables
+- _Linear problems_, where all the constraints are linear
+- _Integer Linear problems_, where all the constraints are linear and the values integers. This is the hardest kind of constraint problem.
 - And many more...
 
 ### Examples of real-world CSPs
