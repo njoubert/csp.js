@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Constraint Satisfaction Problem Solving (CSP): A Constraint solver in JavaScript",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "http://github.com/RedMser/csp.js.git"
@@ -11,5 +14,11 @@
   "bugs": {
     "url": "https://github.com/RedMser/csp.js/issues"
   },
-  "homepage": "https://github.com/RedMser/csp.js"
+  "homepage": "https://github.com/RedMser/csp.js",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^12.1.2",
+    "rollup": "^4.36.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.2"
+  }
 }

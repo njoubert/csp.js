@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2016",
+    "module": "ES2015",
+    "rootDir": "./src",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "outDir": "./tsc-output",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true
+  }
+}
