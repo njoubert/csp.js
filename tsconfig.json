@@ -12,5 +12,6 @@
   },
   "exclude": [
     "**/*.test.ts",
+    "**/*.bench.ts",
   ]
 }
