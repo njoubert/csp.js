@@ -16,6 +16,7 @@
   },
   "scripts": {
     "build": "rollup -c",
+    "benchmark": "jest --projects ./jest-bench.config.js",
     "test": "jest"
   },
   "homepage": "https://github.com/RedMser/csp.js",
@@ -23,6 +24,7 @@
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/jest": "^29.5.14",
     "jest": "^29.7.0",
+    "jest-bench": "^29.7.1",
     "rollup": "^4.36.0",
     "ts-jest": "^29.2.6",
     "tslib": "^2.8.1",
