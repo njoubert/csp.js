@@ -14,10 +14,17 @@
   "bugs": {
     "url": "https://github.com/RedMser/csp.js/issues"
   },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest"
+  },
   "homepage": "https://github.com/RedMser/csp.js",
   "devDependencies": {
     "@rollup/plugin-typescript": "^12.1.2",
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
     "rollup": "^4.36.0",
+    "ts-jest": "^29.2.6",
     "tslib": "^2.8.1",
     "typescript": "^5.8.2"
   }
