@@ -2,7 +2,7 @@
 
 Constraint Satisfaction Problem Solver
 
-This is a JavaScript library for expressing and solving constraint satisfaction problems. It solves discrete finite-domain problems via recursive backtracking.
+This is a TypeScript library for expressing and solving constraint satisfaction problems. It solves discrete finite-domain problems via recursive backtracking.
 
 ## Example
 
@@ -79,4 +79,4 @@ There are tons and tons of problems that can reduce to constraint satisfaction p
 
 This project started as a port of the [python-constraint](http://labix.org/python-constraint) library.
 
-It was originally developed by [Niels Joubert](https://github.com/njoubert/csp.js) before I took the time to modernize the project.
+It was originally developed by [Niels Joubert](https://github.com/njoubert/csp.js) before I modernized the project for the current JavaScript ecosystem.
