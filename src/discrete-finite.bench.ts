@@ -1,5 +1,5 @@
 import { benchmarkSuite } from "jest-bench";
-import { DiscreteFiniteProblem_RecursiveBacktrackingSolver } from './discrete-finite';
+import { DiscreteFiniteProblem_RecursiveBacktrackingSolver } from "./discrete-finite";
 
 benchmarkSuite("generic", {
     ["three variables, two constraints"]: () => {

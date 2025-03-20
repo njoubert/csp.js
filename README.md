@@ -15,7 +15,11 @@ npm install csp-js
 It can then be used like so:
 
 ```js
-import { CSP } from 'csp-js';
+// ES Module
+import { CSP } from "csp-js";
+
+// CommonJS
+// const { CSP } = require("csp-js");
 
 const csp = new CSP();
 
@@ -35,9 +39,11 @@ csp.addConstraint(
 
 // { a: 2, b: 4, c: 8 }
 const oneSolution = csp.getSingleSolution();
+console.log(oneSolution);
 
 // [ { a: 2, b: 4, c: 8 }, { a: 3, b: 6, c: 12 } ]
 const allSolutions = csp.getAllSolutions();
+console.log(allSolutions);
 ```
 
 ## Intro to CSPs

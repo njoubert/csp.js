@@ -1,7 +1,7 @@
-import { DiscreteFiniteProblem_RecursiveBacktrackingSolver } from './discrete-finite';
+import { DiscreteFiniteProblem_RecursiveBacktrackingSolver } from "./discrete-finite";
 
-describe('DiscreteFiniteProblem_RecursiveBacktrackingSolver', () => {
-    test('simple example with three variables', () => {
+describe("DiscreteFiniteProblem_RecursiveBacktrackingSolver", () => {
+    test("simple example with three variables", () => {
         const csp = new DiscreteFiniteProblem_RecursiveBacktrackingSolver();
 
         csp.addVariable("a", [1,2,3]);

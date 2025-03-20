@@ -1,1 +1,1 @@
-export { DiscreteFiniteProblem_RecursiveBacktrackingSolver as CSP } from './discrete-finite';
+export { DiscreteFiniteProblem_RecursiveBacktrackingSolver as CSP } from "./discrete-finite";
