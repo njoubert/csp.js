@@ -1,5 +1,5 @@
 {
-  "name": "csp.js",
+  "name": "csp-js",
   "version": "0.0.1",
   "description": "Constraint Satisfaction Problem Solving (CSP): A Constraint solver in JavaScript",
   "license": "MIT",

@@ -6,25 +6,38 @@ This is a JavaScript library for expressing and solving constraint satisfaction 
 
 ## Example
 
+Install the package via:
+
+```
+npm install csp-js
+```
+
+It can then be used like so:
+
 ```js
-var p = csp.DiscreteProblem();
+import { CSP } from 'csp-js';
 
-p.addVariable("a", [1,2,3]);
-p.addVariable("b", [4,5,6]);
-p.addVariable("c", [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
+const csp = new CSP();
 
-p.addConstraint(
+csp.addVariable("a", [1,2,3]);
+csp.addVariable("b", [4,5,6]);
+csp.addVariable("c", [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
+
+csp.addConstraint(
 	["a", "b"],
 	function(a, b) { return a*2 === b; }
 );
 
-p.addConstraint(
+csp.addConstraint(
 	["b", "c"],
 	function(b, c) { return b*2 === c; }
 );
 
-var one_solution = p.getSolution();
-var all_solutions = p.getSolutions();
+// { a: 2, b: 4, c: 8 }
+const oneSolution = csp.getSingleSolution();
+
+// [ { a: 2, b: 4, c: 8 }, { a: 3, b: 6, c: 12 } ]
+const allSolutions = csp.getAllSolutions();
 ```
 
 ## Intro to CSPs
