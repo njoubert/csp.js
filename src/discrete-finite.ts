@@ -40,7 +40,7 @@ export class DiscreteFiniteProblem_RecursiveBacktrackingSolver {
         return this.allAssignments;
     }
 
-    private solve({ assignments, single }) {
+    private solve({ assignments, single }: { assignments: Record<string, number>, single: boolean }) {
         if (Object.keys(assignments).length === Object.keys(this.variables).length) {
             if (!single) {
                 this.allAssignments.push({ ...assignments });
@@ -49,7 +49,7 @@ export class DiscreteFiniteProblem_RecursiveBacktrackingSolver {
         }
 
         // Find the next variable.
-        let nextVar = null;
+        let nextVar: string | undefined;
         for (const v in this.variables) {
             let found = false;
             for (const a in assignments) {
@@ -58,13 +58,13 @@ export class DiscreteFiniteProblem_RecursiveBacktrackingSolver {
                 }
             }
             if (!found) {
-                nextVar = this.variables[v];
+                nextVar = v;
                 break;
             }
         }
 
-        const checkAssignment = (nextVar, val) => {
-            assignments[nextVar.name] = val;
+        const checkAssignment = (nextVar: string, val: number) => {
+            assignments[nextVar] = val;
             for (const c in this.constraints) {
                 const args = [];
                 let valid = true;
@@ -72,7 +72,7 @@ export class DiscreteFiniteProblem_RecursiveBacktrackingSolver {
                 // Try to build the argument list for this constraint...
                 for (const k in this.constraints[c].variables) {
                     const fp = this.constraints[c].variables[k];
-                    if (typeof assignments[fp] != "undefined") {
+                    if (assignments[fp] !== undefined) {
                         args.push(assignments[fp]);
                     } else {
                         valid = false;
@@ -83,26 +83,29 @@ export class DiscreteFiniteProblem_RecursiveBacktrackingSolver {
                 if (valid) {
                     // We can check it, so check it.
                     if (!this.constraints[c].fn.apply(null, args)) {
-                        delete assignments[nextVar.name];
+                        delete assignments[nextVar];
                         return false;
                     }
                 }
             }
-            delete assignments[nextVar.name];
+            delete assignments[nextVar];
             return true;
         };
 
-        // Try the values in its domain.
-        for (const j in nextVar.domain) {
-            const val = nextVar.domain[j];
-            if (checkAssignment(nextVar, val)) {
-                assignments[nextVar.name] = val;
-                if (this.solve({ assignments, single })) {
-                    if (single) {
-                        return true;
+        if (nextVar !== undefined) {
+            // Try the values in its domain.
+            const domain = this.variables[nextVar];
+            for (const j in domain) {
+                const val = domain[j];
+                if (checkAssignment(nextVar, val)) {
+                    assignments[nextVar] = val;
+                    if (this.solve({ assignments, single })) {
+                        if (single) {
+                            return true;
+                        }
                     }
+                    delete assignments[nextVar];
                 }
-                delete assignments[nextVar.name];
             }
         }
         return false;
